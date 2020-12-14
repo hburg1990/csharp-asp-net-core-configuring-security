@@ -68,7 +68,7 @@ namespace ConferenceTracker
             }
             else
             {
-                app.UseExceptionHandler("Home/Error");
+                app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
 
@@ -76,7 +76,7 @@ namespace ConferenceTracker
             using (var context = scope.ServiceProvider.GetService<ApplicationDbContext>())
                 context.Database.EnsureCreated();
 
-            app.UseCors();
+            app.UseCors(_allowedOrigins);
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
